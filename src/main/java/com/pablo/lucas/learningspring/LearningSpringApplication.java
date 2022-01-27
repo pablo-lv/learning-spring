@@ -1,6 +1,8 @@
 package com.pablo.lucas.learningspring;
 
+import com.pablo.lucas.learningspring.data.entity.Guest;
 import com.pablo.lucas.learningspring.data.entity.Room;
+import com.pablo.lucas.learningspring.data.repository.GuestRepository;
 import com.pablo.lucas.learningspring.data.repository.RoomRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,18 @@ public class LearningSpringApplication {
 		}
 
 	}
+
+	@RestController
+	@RequestMapping("/guests")
+	public class GuestController {
+		@Autowired
+		private GuestRepository guestRepository;
+
+		@GetMapping
+		public Iterable<Guest> getGuests(){
+			return this.guestRepository.findAll();
+		}
+
+    }
 
 }
