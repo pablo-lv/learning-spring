@@ -2,6 +2,7 @@ package com.pablo.lucas.learningspring.business.services;
 
 import java.util.Date;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,8 +63,15 @@ public class ReservationSerice {
             roomReservations.add(roomReservationMap.get(id));
         }
 
-
-
+        roomReservations.sort(new Comparator<RoomReservation>() {
+            @Override
+            public int compare(RoomReservation rs1, RoomReservation rs2) {
+                if (rs1.getRoomName() == rs2.getRoomName()) {
+                    return rs1.getRoomNumber().compareTo(rs2.getRoomNumber());
+                }
+                return rs1.getRoomName().compareTo(rs2.getRoomName());
+            }
+        });
         return roomReservations;
     }
 }
