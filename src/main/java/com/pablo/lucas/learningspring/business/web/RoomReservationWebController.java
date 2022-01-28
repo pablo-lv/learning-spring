@@ -29,7 +29,6 @@ public class RoomReservationWebController {
         final List<RoomReservation> roomReservations = this.reservationSerice.getRoomReservationsForDate(date);
         model.addAttribute("roomReservations", roomReservations);
         return "reservations";
-        
     }
 
 }
